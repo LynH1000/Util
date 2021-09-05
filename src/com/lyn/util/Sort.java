@@ -81,7 +81,7 @@ public class Sort {
      * */
 
 
-    private static void swap(int[] arr, int j, int i) {
+    public static void swap(int[] arr, int j, int i) {
 
         int temp = arr[j];
         arr[j] = arr[i];

@@ -12,12 +12,8 @@ public class Swap {
     public Swap() {
     }
 
-    public Swap(int i, int j, int[] a) {
-        this.i = i;
-        this.j = j;
-        this.a = a;
-    }
-    private static void swap(int i, int j, int[] a){
+
+    public static void swap(int i, int j, int[] a){
         a[i]=a[i]^a[j];
         a[j]=a[i]^a[j];
         a[i]=a[i]^a[j];

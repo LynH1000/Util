@@ -1,5 +1,7 @@
 package com.lyn.util;
 
+import edu.princeton.cs.algs4.Heap;
+
 import java.util.Arrays;
 
 public class MergeSort {
