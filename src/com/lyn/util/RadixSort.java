@@ -1,6 +1,16 @@
 package com.lyn.util;
+
+import edu.princeton.cs.algs4.StdOut;
+
 //桶排序
 public class RadixSort {
+    public static void main(String[] args) {
+       // StdOut.println(getDigit(1,2)+"-------");
+        int i=getDigit(55755,3);
+        System.out.println(i+"-------");
+    }
+
+
     public static void radixsort(int arr[]){
         if (arr == null||arr.length<2) {
             return;
@@ -32,7 +42,7 @@ public class RadixSort {
 
     private static int getDigit(int i, int d) {
 
-        return (int) (i/ (Math.pow(10,d-1)%10));
+        return ((i/((int)Math.pow(10,d-1)))%10);
     }
 
     private static int maxbits(int[] arr) {
