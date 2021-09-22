@@ -104,19 +104,40 @@ public class AboutList {
             next = cur.next.next;
             curCopy = cur.next;
             curCopy.rand = cur.rand != null ? cur.rand.next : null;
-            cur=next;
+            cur = next;
         }
-        Node res=head.next;
-        cur=head;
+        Node res = head.next;
+        cur = head;
 
-        while (cur!=null){
-            next=cur.next.next;
-            curCopy=cur.next;
-            cur.next=next;
-            curCopy.next=next!=null?next.next:next;
-            cur=next;
+        while (cur != null) {
+            next = cur.next.next;
+            curCopy = cur.next;
+            cur.next = next;
+            curCopy.next = next != null ? next.next : next;
+            cur = next;
         }
         return res;
+    }
+
+    public static Node getLoopNode(Node head) {
+        if (head == null || head.next == null || head.next.next == null) {
+            return null;
+        }
+        Node n1 = head.next;
+        Node n2 = head.next.next;
+        while (n1 != n2) {
+            if (n2.next == null || n2.next.next == null) {
+                return null;
+            }
+            n1 = n1.next;
+            n2 = n2.next.next;
+        }
+        n2 = head;
+        while (n1 != n2) {
+            n1 = n1.next;
+            n2 = n2.next;
+        }
+        return n1;
     }
 
 
