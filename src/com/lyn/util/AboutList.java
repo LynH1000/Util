@@ -2,11 +2,11 @@ package com.lyn.util;
 
 public class AboutList {
 
-    public class ListNode<T> {
-        public int data;
-        public ListNode next;
+     class ListNode<T> {
+         public int data;
+         public ListNode next;
 
-    }
+     }
 
 
     static class Node {
@@ -43,8 +43,8 @@ public class AboutList {
         ListNode n2 = node;
         while (n2.next != null && n2.next.next != null) {
             n1 = n1.next;
-            n2 = n2.next.next;//运行完这个循环后n1在中点，n2在链表的最后一个节点
         }
+        n2 = n2.next.next;//运行完这个循环后n1在中点，n2在链表的最后一个节点
 
 
         n2 = n1.next;//n2连接到右半部分的第一个
@@ -126,7 +126,7 @@ public class AboutList {
         }
         Node loop1 = getLoopNode(head1);
         Node loop2 = getLoopNode(head2);
-        if (loop1 == null || loop2 == null) {
+        if (loop1 == null || loop2 == null) {//无环情况
             return noLoop(head1, head2);
         }
         if (loop1 != null && loop2 != null) {
