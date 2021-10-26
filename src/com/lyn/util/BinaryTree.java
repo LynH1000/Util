@@ -1,17 +1,26 @@
 package com.lyn.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
 public class BinaryTree {
 
-    static class Node<V> {
-        int value;
-        Node left;
-        Node right;
+    public static boolean CheckBst(Node head) {
+        List<Node> list = new ArrayList<>();
+        process(head, list);
 
-
+        Iterator<Node> iter = list.iterator();
+        Node current, previous = iter.next();
+        while (iter.hasNext()) {
+            current = iter.next();
+            if (previous.compareTo(current, previous) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
     }
     public int compareTo(Node cur,Node next) {
         return  cur.value-next.value> 0 ? 1 :-1;
@@ -122,17 +131,15 @@ public class BinaryTree {
         System.out.println();
     }
 
-    public static boolean CheckBst(Node head) {
-        List<Node> list = new ArrayList<>();
-        process(head, list);
+    static class Node<V> {
+        int value;
+        Node left;
+        Node right;
 
-        for (int i = 0; i < list.size() - 1; i++) {
 
-            if (list.get(i).value >= list.get(i + 1).value) {
-                return false;
-            }
+        public int compareTo(Node current, Node previous) {
+            return current.value - previous.value >= 0 ? 1 : -1;
         }
-        return true;
     }
 
     public static void process(Node head, List<Node> list) {
