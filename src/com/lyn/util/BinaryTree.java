@@ -1,12 +1,39 @@
 package com.lyn.util;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
+    //判断是否是完全二叉树
+    public static boolean isCBT(Node head) {
+        if (head == null) {
+            return true;
+        }
+        LinkedList<Node> queue = new LinkedList<>();
+        boolean leaf = false;
+        Node l = null, r = null;
+        queue.add(head);
+        while (!queue.isEmpty()) {
+            head = queue.poll();
+            l = head.left;
+            r = head.right;
+            if ((leaf && !(l == null && r == null)) || (l == null && r != null)) {
+                return false;
+            }
+            if (l != null) {
+                queue.add(l);
+            }
+            if (r != null) {
+                queue.add(r);
+            }
+            if (l == null || r == null) leaf = true;
+        }
 
+
+        return true;
+    }
+
+
+    //检查是否是平衡二叉树
     public static boolean CheckBst(Node head) {
         List<Node> list = new ArrayList<>();
         process(head, list);
@@ -22,9 +49,11 @@ public class BinaryTree {
         }
         return true;
     }
-    public int compareTo(Node cur,Node next) {
-        return  cur.value-next.value> 0 ? 1 :-1;
+
+    public int compareTo(Node cur, Node next) {
+        return cur.value - next.value > 0 ? 1 : -1;
     }
+
     /*
      * 递归方式遍历二叉树
      * */
