@@ -3,6 +3,68 @@ package com.lyn.util;
 import java.util.*;
 
 public class BinaryTree {
+
+
+    //按照先序方式 序列化二叉树
+    public static String serialByPre(Node head) {
+        if (head == null) return "#_";
+        String result = head.value + "_";
+        result += serialByPre(head.left);
+        result += serialByPre(head.right);
+        return result;
+    }
+
+    //根据字符串进行反序列号 生成二叉树
+    public static Node reconByPre(String result) {
+        String[] value = result.split("_");
+        Queue queue = new LinkedList();
+        for (String v : value
+        ) {
+            queue.add(v);
+        }
+        return reconByPreO(queue);
+
+    }
+
+    private static Node reconByPreO(Queue<String> queue) {
+        String value = queue.poll();
+        if (value.equals("#")) {
+            return null;
+        }
+        Node head = new Node(Integer.parseInt(value));
+        head.left = reconByPreO(queue);
+        head.right = reconByPreO(queue);
+        return head;
+    }
+
+    //判断是否是平衡二叉树
+    public static boolean isBalancedTree(Node head) {
+        return balanceProcess(head).isBalanced;
+    }
+
+    private static ReturnType balanceProcess(Node head) {
+
+        if (head == null) {
+            return new ReturnType(true, 0);
+        }
+        ReturnType leftData = balanceProcess(head.left);
+        ReturnType rightData = balanceProcess(head.right);
+        int height = Math.max(leftData.height, rightData.height) + 1;
+        boolean isBalanced = leftData.isBalanced && rightData.isBalanced && Math.abs(leftData.height - rightData.height) < 2;
+        return new ReturnType(isBalanced, height);
+    }
+
+    //递归中序遍历
+    public static void process(Node head, List<Node> list) {
+        if (head == null) {
+            return;
+        }
+        process(head.left, list);
+        list.add(head);
+        process(head.right, list);
+    }
+
+
     //判断是否是完全二叉树
     public static boolean isCBT(Node head) {
         if (head == null) {
@@ -160,24 +222,28 @@ public class BinaryTree {
         System.out.println();
     }
 
+    public static class ReturnType {
+        public boolean isBalanced;
+        public int height;
+
+        public ReturnType(boolean isB, int hei) {
+            isBalanced = isB;
+            height = hei;
+        }
+    }
+
     static class Node<V> {
         int value;
         Node left;
         Node right;
 
+        public Node(Integer value) {
+        }
+
 
         public int compareTo(Node current, Node previous) {
             return current.value - previous.value >= 0 ? 1 : -1;
         }
-    }
-
-    public static void process(Node head, List<Node> list) {
-        if (head == null) {
-            return;
-        }
-        process(head.left, list);
-        list.add(head);
-        process(head.right, list);
     }
 
 }
