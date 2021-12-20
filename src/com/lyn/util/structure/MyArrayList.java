@@ -1,6 +1,5 @@
-package com.lyn.util;
+package com.lyn.util.structure;
 
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
