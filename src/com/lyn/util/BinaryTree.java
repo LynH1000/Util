@@ -232,7 +232,7 @@ public class BinaryTree {
         }
     }
 
-    static class Node<V> {
+  private   static class Node<V> {
         int value;
         Node left;
         Node right;

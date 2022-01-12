@@ -5,8 +5,8 @@ import edu.princeton.cs.algs4.Heap;
 import java.util.Arrays;
 
 public class MergeSort {
+    //归并排序
     public static void main(String[] args) {
-
         int arr[] = {1, 3, 2, 5, 4, 9};
         int L = 0, R = arr.length-1;
         process(arr, L, R);
