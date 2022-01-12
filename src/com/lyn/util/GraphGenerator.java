@@ -7,6 +7,7 @@ import com.lyn.util.structure.Node;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class GraphGenerator {
 
@@ -40,14 +41,49 @@ public class GraphGenerator {
         return graph;
     }
 
-    public static void bfs(Node node){
+    //宽度优先
+    public static void bfs(Node node) {
         if (node == null) {
             return;
         }
-        Queue<Node>queue=new LinkedList<>();
-        HashSet<Node>set=new HashSet<>();
+        Queue<Node> queue = new LinkedList<>();
+        HashSet<Node> set = new HashSet<>();
         queue.add(node);
         set.add(node);
+        while (!queue.isEmpty()) {
+            Node cur = queue.poll();
+            System.out.println(cur.value);
+            for (Node next :
+                    cur.nexts) {
+                if (set.contains(next)) {
+                    set.add(next);
+                    queue.add(next);
+                }
+            }
+        }
 
     }
-}
+
+    //广度优先
+    public static void dfs(Node node) {
+        if (node == null) {
+            return;
+        }
+        Stack<Node> stack = new Stack<>();
+        HashSet<Node> set = new HashSet<>();
+        stack.add(node);
+        set.add(node);
+        System.out.println(node.value);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            System.out.println(cur.value);
+            for (Node next : cur.nexts) {
+                if (set.contains(next)) {
+                    stack.push(cur);
+                    stack.push(next);
+                    set.add(next);
+                    break;
+                }
+            }
+        }
+    }
