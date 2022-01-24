@@ -4,10 +4,7 @@ import com.lyn.util.structure.Edge;
 import com.lyn.util.structure.Graph;
 import com.lyn.util.structure.Node;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class GraphGenerator {
 
@@ -87,3 +84,28 @@ public class GraphGenerator {
             }
         }
     }
+
+    public static List<Node> sortedToplogy(Graph graph) {
+        HashMap<Node, Integer> inMap = new HashMap<>();
+        Queue<Node> zeroInQueue = new LinkedList<>();
+        for (Node node : graph.nodes.values()) {
+            inMap.put(node, node.in);
+            if (node.in == 0) {
+                zeroInQueue.add(node);
+            }
+        }
+        List<Node> result = new ArrayList<>();
+        while (!zeroInQueue.isEmpty()) {
+            Node cur = zeroInQueue.poll();
+            result.add(cur);
+            for (Node next : cur.nexts) {
+                inMap.put(next, inMap.get(next) - 1);
+                if (inMap.get(next) == 0) ;
+            }
+        }
+
+        return result;
+    }
+
+
+}
