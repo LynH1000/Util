@@ -107,5 +107,41 @@ public class GraphGenerator {
         return result;
     }
 
+    public static HashMap<Node, Integer> dijkstra(Node head) {
 
+        HashMap<Node, Integer> distanceMap = new HashMap<>();
+        distanceMap.put(head, 0);
+        HashSet<Node> selectNodes = new HashSet<>();
+        Node minNode = getMinDistanceAndUnSelectedNode(distanceMap, selectNodes);
+        while (minNode != null) {
+            int distance = distanceMap.get(minNode);
+            for (Edge edge :
+                    minNode.edges) {
+                Node toNode = edge.to;
+                if (!distanceMap.containsKey(toNode)) {
+                    distanceMap.put(toNode, distance + edge.weight);
+                }
+                distanceMap.put(edge.to, Math.min(distanceMap.get(toNode), distance + edge.weight));
+            }
+            selectNodes.add(minNode);
+            minNode = getMinDistanceAndUnSelectedNode(distanceMap, selectNodes);
+        }
+        return distanceMap;
+
+
+    }
+
+    private static Node getMinDistanceAndUnSelectedNode(HashMap<Node, Integer> distanceMap, HashSet<Node> selectNodes) {
+        Node minNode = null;
+        int minDistance = Integer.MAX_VALUE;
+        for (Map.Entry<Node, Integer> entry : distanceMap.entrySet()) {
+            Node node = entry.getKey();
+            int distance = entry.getValue();
+            if (!selectNodes.contains(node) && distance < minDistance) {
+                minNode = node;
+                minDistance = distance;
+            }
+        }
+        return minNode;
+    }
 }
