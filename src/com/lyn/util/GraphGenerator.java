@@ -107,6 +107,31 @@ public class GraphGenerator {
         return result;
     }
 
+    public static Set<Edge> primMST(Graph graph) {
+        PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new EdgeComparator());
+        HashSet<Node> set = new HashSet();
+        Set<Edge> result = new HashSet<>();
+        graph.nodes.values().forEach(node ->
+        {
+            if (!set.contains(node)) {
+                set.add(node);
+                node.edges.forEach(edge -> priorityQueue.add(edge));
+            }
+            while (!priorityQueue.isEmpty()) {
+                Edge edge = priorityQueue.poll();
+                Node toNode = edge.to;
+                if (!set.contains(toNode)) {
+                    set.add(toNode);
+                    result.add(edge);
+                    for (Edge nextEdge : toNode.edges) {
+                        priorityQueue.add(nextEdge);
+                    }
+                }
+            }
+        });
+        return result;
+    }
+
     public static HashMap<Node, Integer> dijkstra(Node head) {
 
         HashMap<Node, Integer> distanceMap = new HashMap<>();
@@ -128,7 +153,6 @@ public class GraphGenerator {
         }
         return distanceMap;
 
-
     }
 
     private static Node getMinDistanceAndUnSelectedNode(HashMap<Node, Integer> distanceMap, HashSet<Node> selectNodes) {
@@ -144,4 +168,13 @@ public class GraphGenerator {
         }
         return minNode;
     }
+
+
+    private static class EdgeComparator implements Comparator<Edge> {
+        @Override
+        public int compare(Edge o1, Edge o2) {
+            return o1.weight - o2.weight;
+        }
+
+
 }
