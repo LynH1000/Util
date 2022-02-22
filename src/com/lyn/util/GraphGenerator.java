@@ -75,7 +75,7 @@ public class GraphGenerator {
             Node cur = stack.pop();
             System.out.println(cur.value);
             for (Node next : cur.nexts) {
-                if (set.contains(next)) {
+                if (!set.contains(next)) {
                     stack.push(cur);
                     stack.push(next);
                     set.add(next);
