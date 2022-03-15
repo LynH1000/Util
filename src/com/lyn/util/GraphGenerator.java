@@ -133,15 +133,17 @@ public class GraphGenerator {
     }
 
     public static HashMap<Node, Integer> dijkstra(Node head) {
-
+        /*
+         * key 从head出发到当前节点
+         * value 从head到key的距离
+         * */
         HashMap<Node, Integer> distanceMap = new HashMap<>();
         distanceMap.put(head, 0);
         HashSet<Node> selectNodes = new HashSet<>();
         Node minNode = getMinDistanceAndUnSelectedNode(distanceMap, selectNodes);
         while (minNode != null) {
             int distance = distanceMap.get(minNode);
-            for (Edge edge :
-                    minNode.edges) {
+            for (Edge edge : minNode.edges) {
                 Node toNode = edge.to;
                 if (!distanceMap.containsKey(toNode)) {
                     distanceMap.put(toNode, distance + edge.weight);
