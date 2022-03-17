@@ -2,6 +2,7 @@ package com.lyn.util;
 
 import com.lyn.util.structure.TrieNode;
 
+//前缀树
 public class Trie {
     public int oka = 0;
     private TrieNode root;

@@ -61,7 +61,7 @@ public class GraphGenerator {
 
     }
 
-    //广度优先
+    //深度优先
     public static void dfs(Node node) {
         if (node == null) {
             return;
@@ -179,6 +179,6 @@ public class GraphGenerator {
             return o1.weight - o2.weight;
         }
 
-
     }
-}
+    }
+

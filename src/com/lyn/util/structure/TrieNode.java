@@ -6,7 +6,7 @@ package com.lyn.util.structure;
 public class TrieNode {
     public int pass;
     public int end;
-    public TrieNode[] nexts;
+    public TrieNode[] nexts;//HashMap<Node,Integer>
 
     public TrieNode() {
         pass = 0;

@@ -1,21 +1,18 @@
 package com.lyn.util;
 
+import java.util.HashMap;
+
 public class Test {
 
     public static void main(String[] args) {
-        byte[] test=hex2ba("59");
-        for (byte a:test) {
-            System.out.println(a);
-        }
+        HashMap hashMap=new HashMap<>();
+        hashMap.put("1",1);
+        hashMap.put("1",2);
+        hashMap.put("1",3);
+
+        System.out.println(hashMap.get("1"));
     }
 
-    public static byte[] hex2ba(String hexString) {
-        byte[] bytes = new byte[hexString.length() / 2];
-        for (int i = 0; i < bytes.length; i++) {
-            bytes[i] = (byte) Integer.parseInt(hexString.substring(2 * i, 2 * i + 2), 16);
-        }
-        return bytes;
-    }
 }
 
 
