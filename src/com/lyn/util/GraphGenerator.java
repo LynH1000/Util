@@ -1,8 +1,6 @@
 package com.lyn.util;
 
-import com.lyn.util.structure.Edge;
-import com.lyn.util.structure.Graph;
-import com.lyn.util.structure.Node;
+import com.lyn.util.structure.*;
 
 import java.util.*;
 
@@ -158,6 +156,25 @@ public class GraphGenerator {
     }
 
 
+    public static HashMap<Node, Integer> dijkstra2(Node head, int size) {
+        NodeHeap nodeHeap = new NodeHeap(size);
+        nodeHeap.addOrUpdateOrIgnore(head, 0);
+        HashMap<Node, Integer> result = new HashMap<>();
+        while (!nodeHeap.isEmpty()) {
+            NodeRecord record = nodeHeap.pop();
+            Node cur = record.node;
+            int distance = record.distance;
+
+            for (Edge edge : cur.edges) {
+                nodeHeap.addOrUpdateOrIgnore(edge.to, edge.weight + distance);
+            }
+            result.put(cur, distance);
+
+
+        }
+        return result;
+    }
+
     private static Node getMinDistanceAndUnSelectedNode(HashMap<Node, Integer> distanceMap, HashSet<Node> selectNodes) {
         Node minNode = null;
         int minDistance = Integer.MAX_VALUE;
@@ -180,5 +197,7 @@ public class GraphGenerator {
         }
 
     }
-    }
+
+
+}
 
