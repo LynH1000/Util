@@ -1,17 +1,21 @@
 package com.lyn.util;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
 public class Test {
 
     public static void main(String[] args) {
-        HashMap hashMap=new HashMap<>();
-        hashMap.put("1",1);
-        hashMap.put("1",2);
-        hashMap.put("1",3);
 
-        System.out.println(hashMap.get("1"));
+        String queryIP = "192.168.0.5";
+        String[] x = queryIP.split("\\.");
+        System.out.println(Arrays.toString(x));
+
+
+        String str1 = "A,B,C,D";
+        String[] arr1 = str1.split(",");
+        System.out.println(Arrays.toString(arr1));
     }
+
 
 }
 
