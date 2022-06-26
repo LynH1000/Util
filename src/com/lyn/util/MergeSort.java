@@ -8,9 +8,9 @@ public class MergeSort {
     //归并排序
     public static void main(String[] args) {
         int arr[] = {1, 3, 2, 5, 4, 9};
-        int L = 0, R = arr.length-1;
+        int L = 0, R = arr.length - 1;
         process(arr, L, R);
-        Arrays.stream(arr).forEach( System.out::println);
+        Arrays.stream(arr).forEach(System.out::println);
     }
 
     private static void process(int[] arr, int L, int R) {
@@ -27,7 +27,7 @@ public class MergeSort {
         int help[] = new int[R - L + 1];
         int i = 0;
         int point1 = L;
-        int point2 =mid+1;
+        int point2 = mid + 1;
         while (point1 <= mid && point2 <= R) {
             help[i++] = arr[point1] <= arr[point2] ? arr[point1++] : arr[point2++];
         }
