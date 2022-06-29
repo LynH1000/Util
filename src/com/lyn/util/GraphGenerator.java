@@ -48,8 +48,7 @@ public class GraphGenerator {
         while (!queue.isEmpty()) {
             Node cur = queue.poll();
             System.out.println(cur.value);
-            for (Node next :
-                    cur.nexts) {
+            for (Node next : cur.nexts) {
                 if (set.contains(next)) {
                     set.add(next);
                     queue.add(next);
