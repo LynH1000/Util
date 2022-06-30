@@ -1,4 +1,4 @@
-package com.lyn.util.alrg;
+package com.lyn.util.algs;
 
 import com.lyn.util.Trie;
 

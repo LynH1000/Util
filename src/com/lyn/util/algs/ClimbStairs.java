@@ -1,4 +1,5 @@
-package com.lyn.util.alrg;
+package com.lyn.util.algs;
+
 
 public class ClimbStairs {
 
@@ -30,6 +31,4 @@ public class ClimbStairs {
         }
         return dp[n];
     }
-
-
 }

@@ -1,12 +1,16 @@
 package com.lyn.util;
 
-import java.lang.ref.ReferenceQueue;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Test {
 
 
     public static void main(String[] args) {
-        ReferenceQueue referenceQueue = new ReferenceQueue<>();
+        Scanner in = new Scanner(System.in);
+        String queryIP = in.nextLine();
+
+        validIPAddress(queryIP);
     }
 
     public static void validIPAddress(String queryIP) {
