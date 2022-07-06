@@ -101,35 +101,53 @@ public class Demo5 {
             return minLen == -1 ? "" : s.substring(ansl, ansr + 1);
         }
     }
-    //模板
-    /* 滑动窗口算法框架 */
-//    void slidingWindow(String s, String t) {
-//        Map<Character, Integer> need = new HashMap<>();
-//        Map<Character, Integer> window = new HashMap<>();
-//        for (char c : t.toCharArray())
-//            need.put(c, need.getOrDefault(c, 0) + 1);
-//        int left = 0, right = 0;
-//        int valid = 0;
-//        while (right < s.length()) {
-//            // c 是将移入窗口的字符
-//            char c = s.charAt(right);
-//            // 右移窗口
-//            right++;
-//            // 进行窗口内数据的一系列更新
-//
-//            /*** debug 输出的位置 ***/
-//            System.out.println("window: [" + left + "," + right + ")");
-//            /********************/
-//
-//            // 判断左侧窗口是否要收缩
-//            while (window needs shrink){
-//                // d 是将移出窗口的字符
-//                char d = s[left];
-//                // 左移窗口
-//                left++;
-//                // 进行窗口内数据的一系列更新
-//
-//            }
-//        }
-//    }
+ /*模板
+ 滑动窗口算法框架
+  void slidingWindow(String s, String t) {
+      Map<Character, Integer> need = new HashMap<>();
+      Map<Character, Integer> window = new HashMap<>();
+      for (char c : t.toCharArray())
+          need.put(c, need.getOrDefault(c, 0) + 1);
+      int left = 0, right = 0;
+      int valid = 0;
+      while (right < s.length()) {
+          // c 是将移入窗口的字符
+          char c = s.charAt(right);
+          // 右移窗口
+          right++;
+          // 进行窗口内数据的一系列更新
+
+          *//*** debug 输出的位置 ***//*
+          System.out.println("window: [" + left + "," + right + ")");
+          *//********************//*
+
+          // 判断左侧窗口是否要收缩
+          while (window needs shrink){
+              // d 是将移出窗口的字符
+              char d = s[left];
+              // 左移窗口
+              left++;
+              // 进行窗口内数据的一系列更新
+
+          }
+      }
+  }
+    # Step 4 - 情况1
+            # 如果题目的窗口长度固定：用一个if语句判断一下当前窗口长度是否达到了限定长度
+            # 如果达到了，窗口左指针前移一个单位，从而保证下一次右指针右移时，窗口长度保持不变,
+            # 左指针移动之前, 先更新Step 1定义的(部分或所有)维护变量
+            if 窗口长度达到了限定长度:
+                # 更新 (部分或所有) 维护变量
+                # 窗口左指针前移一个单位保证下一次右指针右移时窗口长度保持不变
+
+            # Step 4 - 情况2
+            # 如果题目的窗口长度可变: 这个时候一般涉及到窗口是否合法的问题
+            # 如果当前窗口不合法时, 用一个while去不断移动窗口左指针, 从而剔除非法元素直到窗口再次合法
+            # 在左指针移动之前更新Step 1定义的(部分或所有)维护变量
+            while 不合法:
+                # 更新 (部分或所有) 维护变量
+                # 不断移动窗口左指针直到窗口再次合法
+
+        # Step 5: 返回答案
+  */
 }
