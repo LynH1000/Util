@@ -10,10 +10,15 @@ package com.lyn.util.algs;
 import java.util.HashMap;
 import java.util.Map;
 
+/*两数之和*/
 public class TwoSum {
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 4};
+        int target = 6;
+        solution(nums, target);
+    }
 
-
-    public int[] solution(int[] nums, int target) {
+    public static int[] solution(int[] nums, int target) {
         Map<Integer, Integer> hashtable = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; ++i) {
             if (hashtable.containsKey(target - nums[i])) {
