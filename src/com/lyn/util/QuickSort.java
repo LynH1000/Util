@@ -1,14 +1,15 @@
 package com.lyn.util;
-
+/*
+* 快速排序
+* */
 public class QuickSort {
 
     public static void main(String[] args) {
 
         Integer[] arr = {1, 2, 7, 5, 4, 3};
         quickSort(arr, 0, arr.length - 1);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-        }
+            System.out.print(arr.toString());
+
     }
 
     public static void quickSort(Integer[] arr, int L, int R) {

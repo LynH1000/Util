@@ -12,7 +12,12 @@ import java.util.Map;
  */
 public class LengthOfLongestSubstring {
 
-    public int solution(String s) {
+    public static void main(String[] args) {
+        String s="au";
+        System.out.println(solution(s));
+    }
+
+    public static int solution(String s) {
 
         Map<Character, Integer> rom = new HashMap<>();
         if (s.length() == 0) return 0;
