@@ -33,13 +33,12 @@ public class NumbeReverse {
         int ans=0;
         int digit=0;
         while (num!=0){
-            if (ans<Integer.MIN_VALUE||ans>Integer.MAX_VALUE){
+            if (ans < Integer.MIN_VALUE / 10 || ans > Integer.MAX_VALUE / 10) {
                 return 0;
             }
             digit=num%10;
             ans=ans*10+digit;
             num/=10;
-
         }
         return ans;
     }
