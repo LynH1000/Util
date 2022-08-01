@@ -10,7 +10,7 @@ package com.lyn.util.algs;
 * */
 public class MoveZeroes {
     public static void main(String[] args) {
-        int[] nums = {1};
+        int[] nums = {0, 1, 0, 3, 12};
         MoveZeroes moveZeroes = new MoveZeroes();
         moveZeroes.solution(nums);
     }
